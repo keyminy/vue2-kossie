@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뷰 기초 익히기</title>
+  <style>
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <kossie-button></kossie-button>
+  </div>
+  <hr>
+  <hr>
+  <div id="app-1">
+    <kossie-button></kossie-button>
+  </div>
+  <script>
+    /*
+    Vue.component('hello-world', {
+      template: '<div>hello world</div>'
+    });
+*/
+    /* hello-world 컴포넌트(전역) 선언된거 -> 지역 바꿔보기 */
+    const HelloWorld = {
+      template: '<div>hello world</div>'
+    }
+
+    const KossieButton = {
+      //여기서 hello-world 컴포넌트를 등록(지역으로)
+      components: {
+        'hello-world': HelloWorld
+      },
+      template: `
+      <div> 
+        {{name}}<br>
+        <hello-world></hello-world>
+        <button @click="changeText">Click</button>
+      </div>
+        `,
+      data() {
+        return {
+          name: 'kossie'
+        }
+      },
+      methods: {
+        changeText() {
+          this.name = 'kossie updated';
+        },
+      }
+    };
+
+    const app = new Vue({
+      el: '#app',
+      components: {
+        'kossie-button': KossieButton
+      }
+    })
+
+    const app1 = new Vue({
+      el: '#app-1',
+      components: {
+        'kossie-button': KossieButton
+      }
+    })
+  </script>
+</body>
+
+</html>
