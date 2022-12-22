@@ -1,16 +1,23 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <KossieCoderVue/>
+    <KossieCoder>
+      <template v-slot:header="{kossie}">
+        <p>header slot {{ kossie }}</p>
+      </template>
+      <template v-slot:default>
+        hello slot default
+      </template>
+    </KossieCoder>
   </div>
 </template>
 
 <script>
- import KossieCoderVue from '@/components/KossieCoder.vue';
+ import KossieCoder from '@/components/KossieCoder.vue';
 
 export default {
   components : {
-    KossieCoderVue
+    KossieCoder
   }
 }
 </script>
