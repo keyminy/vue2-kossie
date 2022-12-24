@@ -1,18 +1,16 @@
 <template>
   <div>
     Completed Todo : {{ numberOfCompletedTodo }}
+    {{ todos }}
   </div>
 </template>
 
 <script>
 export default {
-  props : {
-    todos : {
-      type : Array,
-      required : true
-    }
-  },
   computed : {
+    todos(){
+      return this.$store.state.todos;
+    },
     //완료한 todo가 몇개 있는지??
     numberOfCompletedTodo() {
       return this.todos

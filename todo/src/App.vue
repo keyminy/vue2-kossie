@@ -2,12 +2,11 @@
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
     <!--CompletedTodoVue : 완성된 todo목록이 몇개인지-->
-    <CompletedTodoVue :todos="todos"/>
+    <CompletedTodoVue/>
     <!--input태그에 enter키 눌렀을 때, 이벤트 추가 -->
     <AddTodoVue @add-todo="addTodo"/>
     <hr>
     <TodoListVue 
-      :todos="todos"
       @toggle-checkbox="toggleCheckbox"
       @click-delete="deleteTodo"
     />
@@ -26,10 +25,10 @@ export default {
   data(){
     return {
       todoText: '',
-      todos : [
-        {id:1, text:'buy a car',checked:false},
-        {id:2, text:'play game',checked:false},
-      ]
+      // todos : [
+      //   {id:1, text:'buy a car',checked:false},
+      //   {id:2, text:'play game',checked:false},
+      // ]
     }
   },
   methods:{

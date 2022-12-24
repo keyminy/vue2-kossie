@@ -17,10 +17,10 @@ export default {
   components:{
     TodoVue
   },
-  props : {
-    todos : {
-      type : Array,
-      required: true
+  //Vuex의 state가져오기 computed에다가
+  computed : {
+    todos() {
+      return this.$store.state.todos;
     }
   },
   methods : {

@@ -6,7 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   //state : data가 들어가는 곳
   state:{
-
+    todos : [
+      {id:1, text:'buy a car',checked:false},
+      {id:2, text:'play game',checked:false},
+    ]
   },
   //mutations : 데이터를 변경하는 작업
   mutations : {
