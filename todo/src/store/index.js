@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -9,10 +10,14 @@ export default new Vuex.Store({
     todos : [
       {id:1, text:'buy a car',checked:false},
       {id:2, text:'play game',checked:false},
-    ]
+    ],
+    users: []
   },
   //mutations : 데이터를 변경하는 작업
   mutations : {
+    SET_USERS(state,users){
+      state.users = users;
+    },
     ADD_TODO(state,value) {
       state.todos.push({
         id:Math.random(),
@@ -37,7 +42,28 @@ export default new Vuex.Store({
   },
   //actions : 함수가 들어가서 비동기적인 일 처리
   actions : {
-
+    //(비동기작업) setTimeout같은
+    getUsers({commit}){
+      axios.get('https://jsonplaceholder.typicode.com/users')
+          .then(res => {
+            commit('SET_USERS',res.data);
+          });
+    },
+    addTodo({commit},value){
+      setTimeout(function(){
+        commit('ADD_TODO',value);
+      },500);
+    },
+    toggleTodo({commit},payload){
+      setTimeout(function(){
+        commit('TOGGLE_TODO',payload);
+      },500);
+    },
+    deleteTodo({commit},todoId){
+      setTimeout(function(){
+        commit('DELETE_TODO',todoId);
+      },500);
+    }
   },
   //getters : vue component안의 computed와 비슷
   getters : {
