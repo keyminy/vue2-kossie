@@ -1,28 +1,28 @@
 <template>
   <div>
     User List
-    <div v-for="user in users" :key="user.id">
+    <div v-for="user in people" :key="user.id">
       {{ user.name }}
     </div>
   </div>
 </template>
 
 <script>
-
+import {mapState,mapActions} from 'vuex';
 export default {
   created(){
     this.getUsers();
   },
   computed : {
-    //computed를 통해,가져온 users를 호출
-    users() {
-      return this.$store.state.users;
-    }
+    ...mapState({
+      people:'users'
+    })
   },
   methods : {
-    getUsers(){
-      this.$store.dispatch('getUsers')
-    }
+    ...mapActions(['getUsers'])
+    // getUsers(){
+    //   this.$store.dispatch('getUsers')
+    // }
   }
 }
 </script>
