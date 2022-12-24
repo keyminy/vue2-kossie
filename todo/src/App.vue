@@ -49,7 +49,7 @@ export default {
         text:value,
         checked:false
       });
-      this.todoText = '';//입력하고 난담에 인풋값 빈값으로
+      
     },
     toggleCheckbox({id,checked}){
       //자식에서 넘어온 id,checked를 구조분해 할당 문법으로 가져왔다(매개변수 부분 : {id,checked})

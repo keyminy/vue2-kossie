@@ -20,6 +20,7 @@ export default {
   methods : {
     addTodo(e){
       this.$emit('add-todo',e.target.value);
+      this.todoText = '';//입력하고 난담에 인풋값 빈값으로
     }
   }
 }
