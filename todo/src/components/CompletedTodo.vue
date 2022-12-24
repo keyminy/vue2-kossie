@@ -12,7 +12,7 @@ export default {
     // },
     //완료한 todo가 몇개 있는지??
     numberOfCompletedTodo() {
-      return this.$store.getters.numberOfCompletedTodo;
+      return this.$store.getters['todo/numberOfCompletedTodo'];
     }
   }
 }
