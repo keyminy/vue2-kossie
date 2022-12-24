@@ -29,14 +29,19 @@ export default {
   },
   methods: {
     toggleCheckbox(e) {
-      //부모 컴포넌트에 이벤트 보내기
-      this.$emit('toggle-checkbox',{
+      this.$store.commit('TOGGLE_TODO',{
         id: this.todo.id,
         checked:e.target.checked
-      })
+      });
+      /*부모 컴포넌트에 이벤트 보내기(emit)*/
+      // this.$emit('toggle-checkbox',{
+      //   id: this.todo.id,
+      //   checked:e.target.checked
+      // })
     },
     clickDelete(){
-      this.$emit('click-delete',this.todo.id);
+      this.$store.commit('DELETE_TODO',this.todo.id);
+      //this.$emit('click-delete',this.todo.id);
     }
   }
 }
